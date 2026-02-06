@@ -1,3 +1,13 @@
+function insert(value) {
+  const input = document.getElementById("calc-input");
+  input.value += value;
+  input.focus();
+}
+
+
+
+
+
 function calculate() {
   const input = document.getElementById("calc-input").value;
   const resultDiv = document.getElementById("calc-result");
