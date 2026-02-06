@@ -1,77 +1,69 @@
-/* =========================
-   CALCULATOR
-   ========================= */
-function insert(value) {
-  const input = document.getElementById("calc-input");
-  input.value += value;
-  input.focus();
+function show(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
 }
 
-function calculate() {
-  const expr = document.getElementById("calc-input").value;
-  const output = document.getElementById("calc-result");
-
-  try {
-    const scope = {
-      sin: math.sin,
-      cos: math.cos,
-      tan: math.tan,
-      log: math.log,
-      log10: math.log10,
-      sqrt: math.sqrt,
-      pi: math.pi,
-      e: math.e
-    };
-
-    const result = math.evaluate(expr, scope);
-    output.innerText = "Result: " + result;
-  } catch {
-    output.innerText = "Error: Invalid expression";
+/* CALCULATOR */
+function calc(){
+  try{
+    document.getElementById("calcOut").innerText =
+      math.evaluate(document.getElementById("calcInput").value);
+  }catch{
+    document.getElementById("calcOut").innerText = "Error";
   }
 }
 
-/* =========================
-   MULTIPLE GRAPH PLOTTING
-   ========================= */
-function plotGraphs() {
-  const input = document.getElementById("graph-input").value;
-  const expressions = input.split("\n").map(e => e.trim()).filter(e => e);
+/* MATRICES */
+function matMul(){
+  try{
+    const A = math.matrix(JSON.parse(matA.value));
+    const B = math.matrix(JSON.parse(matB.value));
+    matOut.innerText = JSON.stringify(math.multiply(A,B).toArray());
+  }catch{ matOut.innerText="Error"; }
+}
+function matDet(){
+  try{ matOut.innerText = math.det(JSON.parse(matA.value)); }
+  catch{ matOut.innerText="Error"; }
+}
+function matInv(){
+  try{ matOut.innerText = JSON.stringify(math.inv(JSON.parse(matA.value))); }
+  catch{ matOut.innerText="Not invertible"; }
+}
 
-  const traces = [];
-  const xValues = [];
+/* STATISTICS */
+function stats(){
+  const d = statsInput.value.split(",").map(Number);
+  statsOut.innerHTML =
+    "Mean: "+math.mean(d)+
+    "<br>Median: "+math.median(d)+
+    "<br>Std Dev: "+math.std(d);
+}
 
-  for (let x = -10; x <= 10; x += 0.1) {
-    xValues.push(x);
+/* GRAPH */
+function plot(){
+  const exprs = graphInput.value.split("\n").filter(e=>e);
+  const x = [];
+  for(let i=-10;i<=10;i+=0.1) x.push(i);
+  const traces = exprs.map(e=>({
+    x, y: x.map(v=>{try{return math.evaluate(e,{x:v})}catch{return null}}),
+    mode:"lines", name:e
+  }));
+  Plotly.newPlot("plot",traces);
+}
+
+/* INTERSECTIONS */
+function intersections(){
+  interOut.innerText="Intersection finding = numerical (coming next)";
+}
+
+/* INTEGRAL (NUMERICAL) */
+function integrate(){
+  let f = intExpr.value, a=+intA.value, b=+intB.value;
+  let n=1000, h=(b-a)/n, sum=0;
+  for(let i=0;i<n;i++){
+    let x=a+i*h;
+    sum+=math.evaluate(f,{x})*h;
   }
-
-  expressions.forEach((expr, index) => {
-    const yValues = [];
-
-    xValues.forEach(x => {
-      try {
-        yValues.push(math.evaluate(expr, { x }));
-      } catch {
-        yValues.push(null);
-      }
-    });
-
-    traces.push({
-      x: xValues,
-      y: yValues,
-      mode: "lines",
-      name: expr
-    });
-  });
-
-  Plotly.newPlot("graph", traces, {
-    margin: { t: 10 },
-    paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(0,0,0,0)",
-    xaxis: { color: "#fff" },
-    yaxis: { color: "#fff" }
-  });
+  intOut.innerText="≈ "+sum;
 }
 
-function clearGraph() {
-  Plotly.purge("graph");
-}
