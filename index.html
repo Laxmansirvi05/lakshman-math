@@ -5,8 +5,8 @@
   <title>Lakshman Math</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Connect CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css?v=3">
 
   <!-- Math.js -->
   <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
@@ -17,50 +17,49 @@
 
 <body>
 
-  <header>
-    <h1>Lakshman Math</h1>
-    <p>Advanced Online Math Calculator</p>
-  </header>
+<header>
+  <h1>Lakshman Math</h1>
+  <p>Advanced Online Math Calculator</p>
+</header>
 
-  <main>
+<main>
 
-   <section class="card">
-  <h2>Scientific Calculator</h2>
+  <!-- CALCULATOR -->
+  <section class="card">
+    <h2>Scientific Calculator</h2>
 
-  <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
+    <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
 
-  <div class="btn-grid">
-    <button onclick="insert('sin(')">sin</button>
-    <button onclick="insert('cos(')">cos</button>
-    <button onclick="insert('tan(')">tan</button>
+    <div class="btn-grid">
+      <button onclick="insert('sin(')">sin</button>
+      <button onclick="insert('cos(')">cos</button>
+      <button onclick="insert('tan(')">tan</button>
 
-    <button onclick="insert('log10(')">log</button>
-    <button onclick="insert('ln(')">ln</button>
+      <button onclick="insert('log(')">ln</button>
+      <button onclick="insert('log10(')">log</button>
 
-    <button onclick="insert('pi')">π</button>
-    <button onclick="insert('e')">e</button>
+      <button onclick="insert('pi')">π</button>
+      <button onclick="insert('e')">e</button>
 
-    <button onclick="insert('sqrt(')">√</button>
-    <button onclick="insert('^2')">x²</button>
-    <button onclick="insert('^3')">x³</button>
-  </div>
+      <button onclick="insert('sqrt(')">√</button>
+      <button onclick="insert('^2')">x²</button>
+      <button onclick="insert('^3')">x³</button>
+    </div>
 
-  <button class="calc-btn" onclick="calculate()">Calculate</button>
-  <div id="calc-result"></div>
-</section>
+    <button class="calc-btn" onclick="calculate()">Calculate</button>
+    <div id="calc-result"></div>
+  </section>
 
+  <!-- GRAPH -->
+  <section class="card">
+    <h2>Graphing</h2>
+    <input id="graph-input" placeholder="Enter y = f(x), e.g. sin(x)">
+    <button onclick="plotGraph()">Plot</button>
+    <div id="graph" style="height:400px;"></div>
+  </section>
 
-    <section class="card">
-      <h2>Graphing</h2>
-      <input id="graph-input" placeholder="Enter y = f(x), e.g. sin(x)">
-      <button onclick="plotGraph()">Plot</button>
-      <div id="graph" style="height:400px;"></div>
-    </section>
+</main>
 
-  </main>
-
-  <!-- Connect JavaScript -->
-  <script src="script.js"></script>
-
+<script src="./script.js?v=3"></script>
 </body>
 </html>
