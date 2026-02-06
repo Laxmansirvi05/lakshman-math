@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./style.css?v=4">
+  <link rel="stylesheet" href="style.css">
 
   <!-- Math.js -->
   <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
@@ -19,7 +19,7 @@
 
 <header>
   <h1>Lakshman Math</h1>
-  <p>Advanced Online Math Calculator</p>
+  <p>Advanced Online Math Calculator & Graphing Tool</p>
 </header>
 
 <main>
@@ -28,7 +28,7 @@
   <section class="card">
     <h2>Scientific Calculator</h2>
 
-    <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
+    <input id="calc-input" placeholder="e.g. sin(pi/4)">
 
     <div class="btn-grid">
       <button onclick="insert('sin(')">sin</button>
@@ -42,8 +42,8 @@
       <button onclick="insert('e')">e</button>
 
       <button onclick="insert('sqrt(')">√</button>
+      <button onclick="insert('^')">xʸ</button>
       <button onclick="insert('^2')">x²</button>
-      <button onclick="insert('^3')">x³</button>
     </div>
 
     <button class="calc-btn" onclick="calculate()">Calculate</button>
@@ -51,20 +51,25 @@
   </section>
 
   <!-- GRAPHING -->
- <section class="card">
-  <h2>Graphing (Two Functions)</h2>
+  <section class="card">
+    <h2>Graphing (Multiple Functions)</h2>
 
-  <input id="graph-input-1" placeholder="Enter y = f(x), e.g. sin(x)">
-  <input id="graph-input-2" placeholder="Enter y = g(x), e.g. cos(x)">
+    <textarea
+      id="graph-input"
+      placeholder="Enter one function per line:
+sin(x)
+cos(x)
+x^2"
+      rows="5"></textarea>
 
-  <button onclick="plotGraph()">Plot</button>
+    <button onclick="plotGraphs()">Plot All</button>
+    <button class="clear-btn" onclick="clearGraph()">Clear</button>
 
-  <div id="graph" style="height:400px;"></div>
-</section>
-
+    <div id="graph"></div>
+  </section>
 
 </main>
 
-<script src="./script.js?v=4"></script>
+<script src="script.js"></script>
 </body>
 </html>
