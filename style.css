@@ -47,3 +47,28 @@ button {
 button:hover {
   background: #00f2fe;
 }
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.btn-grid button {
+  background: #1fd1f9;
+  color: #000;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-grid button:hover {
+  background: #00b4d8;
+}
+
+.calc-btn {
+  margin-top: 10px;
+  width: 100%;
+}
