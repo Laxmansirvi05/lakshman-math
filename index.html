@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Lakshman Math</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Math.js -->
+  <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
-
-  <!-- Plotly -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
@@ -19,54 +16,65 @@
 
 <header>
   <h1>Lakshman Math</h1>
-  <p>Advanced Online Math Calculator & Graphing Tool</p>
+  <p>All-in-One Math Tool for Students</p>
 </header>
+
+<nav>
+  <button onclick="show('calc')">Calculator</button>
+  <button onclick="show('matrix')">Matrices</button>
+  <button onclick="show('stats')">Statistics</button>
+  <button onclick="show('graph')">Graphs</button>
+  <button onclick="show('integral')">Integrals</button>
+</nav>
 
 <main>
 
-  <!-- SCIENTIFIC CALCULATOR -->
-  <section class="card">
-    <h2>Scientific Calculator</h2>
+<!-- CALCULATOR -->
+<section id="calc" class="card">
+  <h2>Scientific Calculator</h2>
+  <input id="calcInput" placeholder="sin(pi/4)">
+  <button onclick="calc()">Calculate</button>
+  <div id="calcOut"></div>
+</section>
 
-    <input id="calc-input" placeholder="e.g. sin(pi/4)">
+<!-- MATRICES -->
+<section id="matrix" class="card hidden">
+  <h2>Matrices</h2>
+  <textarea id="matA" placeholder="Matrix A: [[1,2],[3,4]]"></textarea>
+  <textarea id="matB" placeholder="Matrix B: [[5,6],[7,8]]"></textarea>
+  <button onclick="matMul()">A × B</button>
+  <button onclick="matDet()">det(A)</button>
+  <button onclick="matInv()">A⁻¹</button>
+  <div id="matOut"></div>
+</section>
 
-    <div class="btn-grid">
-      <button onclick="insert('sin(')">sin</button>
-      <button onclick="insert('cos(')">cos</button>
-      <button onclick="insert('tan(')">tan</button>
+<!-- STATISTICS -->
+<section id="stats" class="card hidden">
+  <h2>Statistics</h2>
+  <input id="statsInput" placeholder="1,2,3,4,5">
+  <button onclick="stats()">Compute</button>
+  <div id="statsOut"></div>
+</section>
 
-      <button onclick="insert('log(')">ln</button>
-      <button onclick="insert('log10(')">log</button>
+<!-- GRAPH -->
+<section id="graph" class="card hidden">
+  <h2>Graphing (Multiple)</h2>
+  <textarea id="graphInput" placeholder="sin(x)\ncos(x)\nx^2"></textarea>
+  <button onclick="plot()">Plot</button>
+  <button onclick="intersections()">Intersections</button>
+  <div id="plot" style="height:400px;"></div>
+  <div id="interOut"></div>
+</section>
 
-      <button onclick="insert('pi')">π</button>
-      <button onclick="insert('e')">e</button>
-
-      <button onclick="insert('sqrt(')">√</button>
-      <button onclick="insert('^')">xʸ</button>
-      <button onclick="insert('^2')">x²</button>
-    </div>
-
-    <button class="calc-btn" onclick="calculate()">Calculate</button>
-    <div id="calc-result"></div>
-  </section>
-
-  <!-- GRAPHING -->
-  <section class="card">
-    <h2>Graphing (Multiple Functions)</h2>
-
-    <textarea
-      id="graph-input"
-      placeholder="Enter one function per line:
-sin(x)
-cos(x)
-x^2"
-      rows="5"></textarea>
-
-    <button onclick="plotGraphs()">Plot All</button>
-    <button class="clear-btn" onclick="clearGraph()">Clear</button>
-
-    <div id="graph"></div>
-  </section>
+<!-- INTEGRALS -->
+<section id="integral" class="card hidden">
+  <h2>Integrals (Numerical)</h2>
+  <input id="intExpr" placeholder="sin(x)">
+  <input id="intA" placeholder="a">
+  <input id="intB" placeholder="b">
+  <button onclick="integrate()">∫ f(x) dx</button>
+  <div id="intOut"></div>
+</section>
 
 </main>
 
