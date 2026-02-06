@@ -31,25 +31,43 @@ function calculate() {
 
 // Graph plotting
 function plotGraph() {
-  const expr = document.getElementById("graph-input").value;
+  const expr1 = document.getElementById("graph-input-1").value;
+  const expr2 = document.getElementById("graph-input-2").value;
+
   const xValues = [];
-  const yValues = [];
+  const yValues1 = [];
+  const yValues2 = [];
 
   for (let x = -10; x <= 10; x += 0.1) {
+    xValues.push(x);
+
     try {
-      xValues.push(x);
-      yValues.push(math.evaluate(expr, { x }));
+      yValues1.push(expr1 ? math.evaluate(expr1, { x }) : null);
     } catch {
-      yValues.push(null);
+      yValues1.push(null);
+    }
+
+    try {
+      yValues2.push(expr2 ? math.evaluate(expr2, { x }) : null);
+    } catch {
+      yValues2.push(null);
     }
   }
 
-  Plotly.newPlot("graph", [{
-    x: xValues,
-    y: yValues,
-    mode: "lines",
-    line: { width: 3 }
-  }], {
+  Plotly.newPlot("graph", [
+    {
+      x: xValues,
+      y: yValues1,
+      mode: "lines",
+      name: "f(x)"
+    },
+    {
+      x: xValues,
+      y: yValues2,
+      mode: "lines",
+      name: "g(x)"
+    }
+  ], {
     margin: { t: 10 },
     paper_bgcolor: "rgba(0,0,0,0)",
     plot_bgcolor: "rgba(0,0,0,0)",
