@@ -1,3 +1,11 @@
+// Insert text into calculator input
+function insert(value) {
+  const input = document.getElementById("calc-input");
+  input.value += value;
+  input.focus();
+}
+
+// Calculator logic
 function calculate() {
   const input = document.getElementById("calc-input").value;
   const resultDiv = document.getElementById("calc-result");
@@ -7,9 +15,8 @@ function calculate() {
       sin: math.sin,
       cos: math.cos,
       tan: math.tan,
-      log: math.log,     // natural log
-      ln: math.log,      // alias for ln
-      log10: math.log10,
+      log: math.log,       // natural log (ln)
+      log10: math.log10,   // base-10 log
       sqrt: math.sqrt,
       pi: math.pi,
       e: math.e
@@ -17,26 +24,12 @@ function calculate() {
 
     const result = math.evaluate(input, scope);
     resultDiv.innerText = "Result: " + result;
-  } catch (err) {
+  } catch (e) {
     resultDiv.innerText = "Error: Invalid expression";
   }
 }
 
-
-
-
-function calculate() {
-  const input = document.getElementById("calc-input").value;
-  const resultDiv = document.getElementById("calc-result");
-
-  try {
-    const result = math.evaluate(input);
-    resultDiv.innerText = "Result: " + result;
-  } catch (err) {
-    resultDiv.innerText = "Error: Invalid expression";
-  }
-}
-
+// Graph plotting
 function plotGraph() {
   const expr = document.getElementById("graph-input").value;
   const xValues = [];
@@ -54,10 +47,13 @@ function plotGraph() {
   Plotly.newPlot("graph", [{
     x: xValues,
     y: yValues,
-    mode: "lines"
+    mode: "lines",
+    line: { width: 3 }
   }], {
-    margin: { t: 0 },
+    margin: { t: 10 },
     paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(0,0,0,0)"
+    plot_bgcolor: "rgba(0,0,0,0)",
+    xaxis: { color: "#fff" },
+    yaxis: { color: "#fff" }
   });
 }
