@@ -1,9 +1,26 @@
-function insert(value) {
-  const input = document.getElementById("calc-input");
-  input.value += value;
-  input.focus();
-}
+function calculate() {
+  const input = document.getElementById("calc-input").value;
+  const resultDiv = document.getElementById("calc-result");
 
+  try {
+    const scope = {
+      sin: math.sin,
+      cos: math.cos,
+      tan: math.tan,
+      log: math.log,     // natural log
+      ln: math.log,      // alias for ln
+      log10: math.log10,
+      sqrt: math.sqrt,
+      pi: math.pi,
+      e: math.e
+    };
+
+    const result = math.evaluate(input, scope);
+    resultDiv.innerText = "Result: " + result;
+  } catch (err) {
+    resultDiv.innerText = "Error: Invalid expression";
+  }
+}
 
 
 
