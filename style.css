@@ -2,30 +2,30 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
+  color: white;
 }
 
 header {
   text-align: center;
-  padding: 30px 20px;
-  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  background: rgba(0,0,0,0.4);
 }
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.1);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-input {
+input, textarea {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -34,41 +34,42 @@ input {
   font-size: 16px;
 }
 
+textarea {
+  resize: vertical;
+}
+
 button {
   background: #00c6ff;
   border: none;
-  padding: 10px 20px;
-  color: #000;
-  font-size: 16px;
+  padding: 10px 15px;
+  color: black;
+  font-size: 15px;
   border-radius: 6px;
   cursor: pointer;
+  margin: 5px 5px 5px 0;
 }
 
 button:hover {
   background: #00f2fe;
 }
+
+.calc-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.clear-btn {
+  background: #ff4d4d;
+  color: white;
+}
+
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  margin: 15px 0;
+  gap: 8px;
 }
 
-.btn-grid button {
-  background: #1fd1f9;
-  color: #000;
-  border: none;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.btn-grid button:hover {
-  background: #00b4d8;
-}
-
-.calc-btn {
+#graph {
+  height: 420px;
   margin-top: 10px;
-  width: 100%;
 }
