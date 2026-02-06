@@ -24,12 +24,31 @@
 
   <main>
 
-    <section class="card">
-      <h2>Scientific Calculator</h2>
-      <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
-      <button onclick="calculate()">Calculate</button>
-      <div id="calc-result"></div>
-    </section>
+   <section class="card">
+  <h2>Scientific Calculator</h2>
+
+  <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
+
+  <div class="btn-grid">
+    <button onclick="insert('sin(')">sin</button>
+    <button onclick="insert('cos(')">cos</button>
+    <button onclick="insert('tan(')">tan</button>
+
+    <button onclick="insert('log10(')">log</button>
+    <button onclick="insert('ln(')">ln</button>
+
+    <button onclick="insert('pi')">π</button>
+    <button onclick="insert('e')">e</button>
+
+    <button onclick="insert('sqrt(')">√</button>
+    <button onclick="insert('^2')">x²</button>
+    <button onclick="insert('^3')">x³</button>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Calculate</button>
+  <div id="calc-result"></div>
+</section>
+
 
     <section class="card">
       <h2>Graphing</h2>
