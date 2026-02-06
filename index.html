@@ -1,9 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Lakshman Math</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Connect CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Math.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
+
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
+
 <body>
-  <h1>My Math Website</h1>
+
+  <header>
+    <h1>Lakshman Math</h1>
+    <p>Advanced Online Math Calculator</p>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>Scientific Calculator</h2>
+      <input id="calc-input" placeholder="Enter expression e.g. sin(pi/4)">
+      <button onclick="calculate()">Calculate</button>
+      <div id="calc-result"></div>
+    </section>
+
+    <section class="card">
+      <h2>Graphing</h2>
+      <input id="graph-input" placeholder="Enter y = f(x), e.g. sin(x)">
+      <button onclick="plotGraph()">Plot</button>
+      <div id="graph" style="height:400px;"></div>
+    </section>
+
+  </main>
+
+  <!-- Connect JavaScript -->
+  <script src="script.js"></script>
+
 </body>
 </html>
