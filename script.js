@@ -1,4 +1,4 @@
-// Insert text into calculator input
+// Insert value into calculator input
 function insert(value) {
   const input = document.getElementById("calc-input");
   input.value += value;
@@ -29,10 +29,18 @@ function calculate() {
   }
 }
 
-// Graph plotting
+// Graph plotting (two functions)
 function plotGraph() {
-  const expr1 = document.getElementById("graph-input-1").value;
-  const expr2 = document.getElementById("graph-input-2").value;
+  const input1 = document.getElementById("graph-input-1");
+  const input2 = document.getElementById("graph-input-2");
+
+  if (!input1 || !input2) {
+    alert("Graph input boxes not found");
+    return;
+  }
+
+  const expr1 = input1.value;
+  const expr2 = input2.value;
 
   const xValues = [];
   const yValues1 = [];
@@ -71,7 +79,7 @@ function plotGraph() {
     margin: { t: 10 },
     paper_bgcolor: "rgba(0,0,0,0)",
     plot_bgcolor: "rgba(0,0,0,0)",
-    xaxis: { color: "#fff" },
-    yaxis: { color: "#fff" }
+    xaxis: { color: "#ffffff" },
+    yaxis: { color: "#ffffff" }
   });
 }
